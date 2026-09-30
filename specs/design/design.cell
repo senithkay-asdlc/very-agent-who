@@ -1,0 +1,8 @@
+title very-agent-who
+
+component threat-classifier-agent as "Threat Classifier Agent" ai-agent
+component classification-db as "Classification Log" database
+
+north -> threat-classifier-agent
+
+threat-classifier-agent -> classification-db
