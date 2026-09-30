@@ -1,0 +1,4 @@
+apiVersion = "agentic-engineer/v1"
+name = "very-agent-who"
+createdAt = "2026-09-30T07:44:59Z"
+idea = "create a very simple agent who can categorize a sentence is threatning or not"
