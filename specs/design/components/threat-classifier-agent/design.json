@@ -7,10 +7,29 @@
   "appPath": "threat-classifier-agent",
   "entrypoint": "deployment/ai-agent",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "platform-resource", "name": "classification-db", "resourceType": "postgres-cnpg" }
+  "stories": [
+    1,
+    2
   ],
   "description": "A single-purpose AI agent: given a sentence, it classifies the sentence as \"threatening\" or \"not threatening\" and returns that label. Every submission and its resulting label is recorded in its own conversation store (classification-db) so classifications can be reviewed later; it holds no other business data. The endpoint is intentionally open to any caller with no credential or sign-in, per product decision, and does not sit behind Thunder — so the platform's gateway-identity assumptions for ai-agent components (a caller identity on every turn) do not apply here and the build must treat an anonymous caller as the norm rather than an error. It does not do confidence scoring, explanations, multi-language handling, or provide any UI.",
-  "stories": [1, 2],
-  "skillsPinned": ["agent-building"]
+  "dependencies": [
+    {
+      "kind": "platform-resource",
+      "name": "classification-db",
+      "resourceType": "postgres-cnpg",
+      "wiring": {
+        "ref": "very-agent-who-cl-a6ff236c",
+        "envBindings": {
+          "dbname": "CLASSIFICATION_DB_DBNAME",
+          "host": "CLASSIFICATION_DB_HOST",
+          "password": "CLASSIFICATION_DB_PASSWORD",
+          "port": "CLASSIFICATION_DB_PORT",
+          "user": "CLASSIFICATION_DB_USER"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "agent-building"
+  ]
 }
