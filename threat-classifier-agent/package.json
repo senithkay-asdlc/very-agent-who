@@ -1,0 +1,26 @@
+{
+  "name": "threat-classifier-agent",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/main.js"
+  },
+  "dependencies": {
+    "ai": "^7.0.2",
+    "@ai-sdk/anthropic": "^4.0.0",
+    "@ai-sdk/openai-compatible": "^3.0.55",
+    "zod": "^4.3.6",
+    "pg": "^8.13.0",
+    "@opentelemetry/api": "^1.9.0",
+    "@opentelemetry/sdk-trace-node": "^1.28.0",
+    "@opentelemetry/exporter-trace-otlp-http": "^0.55.0",
+    "@opentelemetry/resources": "^1.28.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^6.0.2",
+    "@types/pg": "^8.11.0"
+  }
+}

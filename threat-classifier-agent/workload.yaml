@@ -1,0 +1,22 @@
+apiVersion: openchoreo.dev/v1alpha1
+metadata:
+  name: threat-classifier-agent
+
+endpoints:
+  - name: http
+    type: HTTP
+    port: 9090
+    basePath: /
+    visibility:
+      - project
+      - external
+
+dependencies:
+  resources:
+    - ref: very-agent-who-cl-a6ff236c
+      envBindings:
+        dbname: CLASSIFICATION_DB_DBNAME
+        host: CLASSIFICATION_DB_HOST
+        password: CLASSIFICATION_DB_PASSWORD
+        port: CLASSIFICATION_DB_PORT
+        user: CLASSIFICATION_DB_USER
